@@ -20,13 +20,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        exerciseOne()
-        exerciseTwo()
-        exerciseThree()
+//        exerciseOne()
+//        exerciseTwo()
+//        exerciseThree()
         
         let apiToContact = "https://itunes.apple.com/us/rss/topmovies/limit=25/json"
         // This code will call the iTunes top 25 movies endpoint listed above
@@ -38,8 +39,17 @@ class ViewController: UIViewController {
                     
                     // Do what you need to with JSON here!
                     // The rest is all boiler plate code you'll use for API requests
+                    let rand = Int(arc4random_uniform(25))
                     
+                    let newMovie = json["feed"]["entry"][rand]
                     
+                    let movie: Movie = Movie(json: newMovie)
+                    
+                    self.movieTitleLabel.text = movie.name
+                    self.rightsOwnerLabel.text = movie.rightsOwner
+                    self.releaseDateLabel.text = movie.releaseDate
+                    self.priceLabel.text = movie.price
+                    self.posterImageView = loadPoster(urlString: )
                 }
             case .failure(let error):
                 print(error)

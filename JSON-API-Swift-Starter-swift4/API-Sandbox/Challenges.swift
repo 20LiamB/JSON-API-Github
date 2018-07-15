@@ -27,12 +27,28 @@ internal func exerciseOne() {
     // Alright, now we have a JSON object from SwiftyJSON containing the user data!
     // Let's save the user's first name to a constant!
     let firstName = userData["results"][0]["name"]["first"].stringValue
+    let lastName = userData["results"][0]["name"]["last"].stringValue
+    
+    let streetName = userData["results"][0]["location"]["street"].stringValue
+    
+    let cityName = userData["results"][0]["location"]["city"].stringValue
+    
+    let stateName = userData["results"][0]["location"]["state"].stringValue
+    
+    let postCodeNumber = userData["results"][0]["location"]["postcode"].stringValue
+    
+    let email = userData["results"][0]["email"].stringValue
+    
+    let title = userData["results"][0]["name"]["title"].stringValue
+    
+    let cellNumber = userData["results"][0]["cell"].stringValue
     // Do you see what we did there? We navigated down the JSON heirarchy, asked for "results",
     // then the first dictionary value of that array, then the dictionary stored in "name",
     // then the value stored in "first". We  then told it that we wanted the value as a string.
     
+    print("\(firstName) \(lastName) lives at \(streetName) in \(cityName), \(stateName), \(postCodeNumber). If you want to contact \(title). \(lastName), you can email \(email) or call at \(cellNumber)")
+    
     /*
-     
      Now it's your turn to get the rest of the values needed to print the following:
      
      "<first name> <last name> lives at <street name> in <city>, <state>, <post code>.

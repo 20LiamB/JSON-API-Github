@@ -42,14 +42,13 @@ class ViewController: UIViewController {
                     let rand = Int(arc4random_uniform(25))
                     
                     let newMovie = json["feed"]["entry"][rand]
-                    
                     let movie: Movie = Movie(json: newMovie)
                     
                     self.movieTitleLabel.text = movie.name
                     self.rightsOwnerLabel.text = movie.rightsOwner
                     self.releaseDateLabel.text = movie.releaseDate
                     self.priceLabel.text = movie.price
-                    self.posterImageView = loadPoster(urlString: )
+                    self.loadPoster(urlString: movie.url)
                 }
             case .failure(let error):
                 print(error)

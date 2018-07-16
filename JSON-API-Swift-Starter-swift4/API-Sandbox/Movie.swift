@@ -23,7 +23,7 @@ struct Movie {
         self.price = json["feed"]["entry"]["im:price"].stringValue
         self.link = json["feed"]["entry"]["link"].stringValue
         self.releaseDate = json["feed"]["entry"]["im:releaseDate"].stringValue
-        self.url = json["feed"]["entry"]["im:label"].stringValue
+        self.url = json["feed"]["entry"]["im:image"]["label"].stringValue
     }
     
     
